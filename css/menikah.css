@@ -66,7 +66,7 @@ html {
 }
 
 .hero .subtitle {
-  padding: 35px;
+  padding top: 0;
   color: whitesmoke;
   font-size: 1.3rem;
 }
