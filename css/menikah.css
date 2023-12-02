@@ -15,6 +15,10 @@ html {
   min-height: 100%;
 }
 
+.aud {
+  display: none;
+}
+
 .header-wrapper {
   padding-bottom: 30px;
 }
@@ -35,6 +39,7 @@ html {
 }
 
 
+
 .hero {
     background: linear-gradient(rgba(75, 63, 63, 0.65), rgba(153, 110, 109, 0.65)), rgba(0, 0, 0, 0.55) url("https://i.ibb.co/WWRpg4j/bg.jpg") no-repeat;
   background-attachment: fixed;
@@ -45,6 +50,11 @@ html {
 }
 
 
+
+.hero .Untuk{
+  font-family: 'Rouge Script', sans-serif;
+  font-size: 3rem;
+}
 
 .hero .title {
   font-family: 'Rouge Script', sans-serif;
@@ -570,6 +580,15 @@ body.preloader-site {
   font-size: 0.1rem;
 }
 
+.section-dark .button {
+background-color : #996E6D;
+color: white;
+}
+
+.section-dark .button:hover {
+background-color : white;
+color: #996E6D;
+}
 
 .instagram {
   color: #996E6D;
