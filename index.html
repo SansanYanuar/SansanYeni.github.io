@@ -36,6 +36,8 @@
     <!-- Github Button -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
   </head>
+  
+<audio class="aud"id="audio" src="audio/truelove.mp3" type="audio/mp3" preload="auto" controls ></audio>
 
   <body>
     <!-- Begin Preloader -->
@@ -90,6 +92,8 @@
         <!-- Begin Hero Content-->
         <div class="hero-body">
           <div class="container has-text-centered">
+            
+<h1 class="Untuk" id="dynamic-h1">Untuk Fulan</h1>
             <h1 class="subtitle">Undangan Pernikahan</h1>
             <h2 class="title">Sansan<br>&<br>Yeni</h2>
             <h4 class="subtitle tempatwaktu">
@@ -101,13 +105,14 @@
                 Kota Sumedang
               
             </h4>
-           
-<button class="button is-rounded is-primary btnbuka">
+
+<button class="button is-rounded is-primary btnbuka" onclick="playAudio()">
   <span class="icon">
     <i class="fas fa-envelope"></i>
   </span>
   <span>Buka undangan</span>
 </button>
+
           </div>
 
         
@@ -380,8 +385,21 @@
           <div class="columns is-multiline">
             <div class="column is-12 prolog">
               <h1 class="title has-text-centered section-title" data-aos="fade-up" data-aos-easing="linear">Kirim Hadiah</h1>
-              <h1 class="subtitle has-text-centered Section-subtitle" data-aos="fade-up" data-aos-easing="linear">Ungkapan Tanda Kasih</h1>
-              <div class="space40px"></div>
+              <div class="card">
+                <div class="card-content has-text-centered">
+                  <h1 class="title is-size-5">Sansan Yanuar Prawira Disastra</h1>
+                   <h1 class="subtitle is-size-5">BCA 7771893213</h1>
+                  <div class="buttons is-centered">
+                    <button class="button is-rounded" onclick="copyText('7771893213')">Copy No Rekening</button>
+                  </div>
+                    
+                       <h1 class="title is-size-5">Yeni Hernawati</h1>
+                         <h1 class="subtitle is-size-5">BCA 3790739417</h1>
+                         <div class="buttons is-centered"
+                    <button class="button is-rounded" onclick="copyText('3790739417')">Copy No Rekening</button>
+                         </div>
+                </div>
+              </div>
       
               <div class="space40px"></div>
               <div data-aos="fade-up" data-aos-easing="linear">
@@ -451,6 +469,81 @@
         duration: 800,
       });
     </script>
+
+<script>
+  function copyText(text) {
+    navigator.clipboard.writeText(text).then(function() {
+      console.log('Text berhasil disalin: ' + text);
+    }).catch(function(err) {
+      console.error('Gagal menyalin teks: ', err);
+    });
+  }
+  
+</script>
+
+<script>
+  // Fungsi untuk memutar audio dan mengarahkan pengguna ke #regular-section
+  function playAudio() {
+    var audio = document.getElementById("audio");
+    audio.play();
+
+    // Mengatur kecepatan scroll dengan animasi
+    var targetSection = document.getElementById("regular-section");
+    var targetPosition = targetSection.offsetTop;
+    var currentPosition = window.scrollY;
+    var distance = targetPosition - currentPosition;
+    var duration = 5000; // Durasi animasi dalam milidetik (1 detik = 1000 milidetik)
+    var start = null;
+
+    function step(timestamp) {
+      if (!start) start = timestamp;
+      var progress = timestamp - start;
+      window.scrollTo(0, easeInOut(progress, currentPosition, distance, duration));
+
+      if (progress < duration) {
+        requestAnimationFrame(step);
+      }
+    }
+
+    // Fungsi untuk menggambarkan pola percepatan-easeInOut
+    function easeInOut(t, b, c, d) {
+      t /= d / 2;
+      if (t < 1) return c / 2 * t * t + b;
+      t--;
+      return -c / 2 * (t * (t - 2) - 1) + b;
+    }
+
+    requestAnimationFrame(step);
     
+    
+  }
+</script>
+
+
+
+<script>
+  // Fungsi untuk mendapatkan nilai parameter dari URL
+  function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
+  // Mendapatkan nilai parameter 'text' dari URL
+  var textParam = getParameterByName('text');
+
+  // Memperbarui h1 jika parameter 'text' ditemukan
+  if (textParam) {
+    var dynamicH1 = document.getElementById('dynamic-h1');
+    dynamicH1.textContent = textParam;
+  }
+</script>
+
+
+
   </body>
 </html>
